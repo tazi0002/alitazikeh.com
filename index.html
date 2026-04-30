@@ -29,7 +29,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-lg premium-navbar">
         <div class="container">
-          <a class="navbar-brand brand-mark interactive-hover" href="index.html">Ali Tazikeh</a>
+          <a class="navbar-brand brand-mark interactive-hover" href="./">Ali Tazikeh</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -46,11 +46,10 @@
               <li class="nav-item"><a class="nav-link interactive-hover" href="#about">About</a></li>
               <li class="nav-item"><a class="nav-link interactive-hover" href="#skills">Skills</a></li>
               <li class="nav-item"><a class="nav-link interactive-hover" href="#portfolio">Portfolio</a></li>
-              <li class="nav-item"><a class="nav-link interactive-hover" href="#photography">Photography</a></li>
               <li class="nav-item"><a class="nav-link interactive-hover" href="#contact">Contact</a></li>
             </ul>
-            <a class="button button-primary interactive-hover" href="#contact">
-              Start a Conversation
+            <a class="button button-primary interactive-hover" href="https://www.behance.net/alitazikeh" target="_blank" rel="noreferrer">
+              Visit My Behance
               <i data-lucide="arrow-up-right"></i>
             </a>
           </div>
@@ -106,14 +105,6 @@
                 </div>
               </div>
               <div class="hero-floating-icons" id="hero-floating-icons"></div>
-              <div class="hero-orbit-badge badge-top">
-                <i data-lucide="sparkles"></i>
-                <span>Premium feel</span>
-              </div>
-              <div class="hero-orbit-badge badge-bottom">
-                <i data-lucide="layout-template"></i>
-                <span>Editorial systems</span>
-              </div>
             </div>
           </div>
 
@@ -188,80 +179,59 @@
           </div>
 
           <div class="category-strip reveal">
-            <article class="category-pill">
+            <a class="category-pill interactive-hover" href="#portfolio-ux">
               <strong>UX/UI Design</strong>
               <span>Case studies with process, systems, and user thinking</span>
-            </article>
-            <article class="category-pill">
+            </a>
+            <a class="category-pill interactive-hover" href="#portfolio-web">
               <strong>Web Development</strong>
               <span>Responsive front-end builds from structured mockups</span>
-            </article>
-            <article class="category-pill">
-              <strong>Photography</strong>
-              <span>Editorial image curation and a lightbox viewing experience</span>
-            </article>
-            <article class="category-pill">
+            </a>
+            <a class="category-pill interactive-hover" href="#portfolio-video">
               <strong>Videography</strong>
               <span>Story-driven short-form and sound-supported projects</span>
-            </article>
+            </a>
+            <a class="category-pill interactive-hover" href="#portfolio-photography">
+              <strong>Photography</strong>
+              <span>Editorial image curation and a lightbox viewing experience</span>
+            </a>
           </div>
 
-          <div class="portfolio-category-block">
+          <div class="portfolio-category-block" id="portfolio-ux">
             <div class="category-heading reveal">
               <span class="section-label">UX/UI Design</span>
               <h3>Case studies with deeper context</h3>
             </div>
             <div class="portfolio-grid" id="ux-grid"></div>
+            <div class="portfolio-category-actions reveal" id="ux-actions"></div>
           </div>
 
-          <div class="portfolio-category-block">
+          <div class="portfolio-category-block" id="portfolio-web">
             <div class="category-heading reveal">
               <span class="section-label">Web Development</span>
               <h3>Responsive static sites built from design direction</h3>
             </div>
             <div class="portfolio-grid" id="web-grid"></div>
+            <div class="portfolio-category-actions reveal" id="web-actions"></div>
           </div>
 
-          <div class="portfolio-category-block photography-preview-block">
-            <div class="category-heading reveal">
-              <span class="section-label">Photography</span>
-              <h3>Curated frames with an editorial rhythm</h3>
-            </div>
-            <div class="photo-preview-grid" id="photo-preview-grid"></div>
-            <a class="button button-secondary interactive-hover reveal" href="#photography">
-              Open Photography Collection
-              <i data-lucide="camera"></i>
-            </a>
-          </div>
-
-          <div class="portfolio-category-block">
+          <div class="portfolio-category-block" id="portfolio-video">
             <div class="category-heading reveal">
               <span class="section-label">Videography</span>
               <h3>Short-form work shaped through editing, pacing, and sound</h3>
             </div>
             <div class="portfolio-grid" id="video-grid"></div>
+            <div class="portfolio-category-actions reveal" id="video-actions"></div>
           </div>
-        </div>
-      </section>
 
-      <section class="content-section photography-section" id="photography">
-        <div class="container">
-          <div class="section-heading reveal">
-            <span class="section-label">Photography Gallery</span>
-            <h2>Browse my photo collection with filters, sorting, and full-image preview.</h2>
+          <div class="portfolio-category-block photography-preview-block" id="portfolio-photography">
+            <div class="category-heading reveal">
+              <span class="section-label">Photography</span>
+              <h3>Curated frames with an editorial rhythm</h3>
+            </div>
+            <div class="photo-preview-grid" id="photo-preview-grid"></div>
+            <div class="portfolio-category-actions reveal" id="photo-actions"></div>
           </div>
-          <div class="gallery-toolbar reveal">
-            <div class="filter-row" id="photo-filters"></div>
-            <label class="sort-control">
-              <span>Sort</span>
-              <select id="photo-sort" class="form-select interactive-hover" aria-label="Sort photography">
-                <option value="curated">Curated order</option>
-                <option value="reverse">Reverse order</option>
-                <option value="filename">Filename</option>
-              </select>
-            </label>
-          </div>
-          <div class="photography-grid" id="photography-grid"></div>
         </div>
       </section>
 
@@ -270,7 +240,7 @@
           <div class="contact-shell">
             <div class="contact-copy reveal">
               <span class="section-label">Get in Touch</span>
-              <h2>Let’s create work that feels polished, modern, and intentional.</h2>
+              <h2>Lets create work that feels polished, modern, and intentional.</h2>
               <p>
                 If you would like to collaborate, ask a question, or talk about a project, send a
                 message here and I will follow up by email.
@@ -330,22 +300,11 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-shell">
-        <div>
-          <a class="brand-mark interactive-hover" href="index.html">Ali Tazikeh</a>
-        </div>
-        <div class="footer-links">
-          <a class="interactive-hover" href="#about">About</a>
-          <a class="interactive-hover" href="#portfolio">Portfolio</a>
-          <a class="interactive-hover" href="#photography">Photography</a>
-          <a class="interactive-hover" href="#contact">Contact</a>
-        </div>
-        <div class="footer-contact">
-          <a class="interactive-hover" href="mailto:tazi0002@algonquinlive.com">tazi0002@algonquinlive.com</a>
-          <p>© <span id="current-year"></span> Ali Tazikeh</p>
-        </div>
-      </div>
-    </footer>
+  <div class="container footer-shell">
+    <div class="footer-socials" data-footer-socials></div>
+    <p class="footer-legal">&copy; <span id="current-year"></span> Ali Tazikeh. All rights reserved.</p>
+  </div>
+</footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

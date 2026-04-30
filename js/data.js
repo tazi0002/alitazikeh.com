@@ -6,54 +6,219 @@ window.SITE_DATA = {
     { value: "28", label: "curated photo frames" },
     { value: "4", label: "creative disciplines" }
   ],
-  skills: [
+  heroSocials: [
+    {
+      name: "GitHub",
+      href: "https://github.com/tazi0002",
+      iconUrl: "images/icons/github-icon.svg",
+      accent: "#181717"
+    },
+    {
+      name: "X",
+      href: "https://x.com/alitazikehx",
+      iconUrl: "images/icons/x-social-media-black-icon.svg",
+      accent: "#111111"
+    },
+    {
+      name: "Behance",
+      href: "https://www.behance.net/alitazikeh",
+      iconUrl: "images/icons/behance-color-icon.svg",
+      accent: "#1769ff"
+    },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/ali.tazikeh.fb/",
+      iconUrl: "images/icons/facebook-round-color-icon.svg",
+      accent: "#1877f2"
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/ali-tazikeh-621b51181",
+      iconUrl: "images/icons/linkedin-app-icon.svg",
+      accent: "#0a66c2"
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/ali.tazikeh.ig/",
+      iconUrl: "images/icons/ig-instagram-icon.svg",
+      accent: "#e4405f"
+    },
+    {
+      name: "YouTube",
+      href: "https://www.youtube.com/@ali-tazikeh-yt",
+      iconUrl: "images/icons/youtube-color-icon.svg",
+      accent: "#ff0000"
+    }
+  ],
+  heroSkills: [
     {
       name: "Figma",
-      iconUrl: "https://cdn.simpleicons.org/figma/F24E1E",
-      accent: "#f24e1e",
-      note: "Interface systems, wireframes, and collaborative prototyping"
-    },
-    {
-      name: "Photoshop",
-      iconUrl: "images/icons/adobe-photoshop.svg",
-      accent: "#31a8ff",
-      note: "Photo retouching, composition, and polished visual assets"
-    },
-    {
-      name: "Illustrator",
-      iconUrl: "images/icons/adobe-illustrator.svg",
-      accent: "#ff9a00",
-      note: "Brand graphics, icon work, and sharp vector layouts"
+      iconUrl: "images/icons/figma-icon.svg",
+      accent: "#f24e1e"
     },
     {
       name: "JavaScript",
-      iconUrl: "https://cdn.simpleicons.org/javascript/F7DF1E",
-      accent: "#f7df1e",
-      note: "DOM interaction, event handling, and dynamic front-end behavior"
+      iconUrl: "images/icons/javascript-programming-language-icon.svg",
+      accent: "#f7df1e"
     },
     {
-      name: "VS Code",
-      iconUrl: "images/icons/vscode.svg",
-      accent: "#007acc",
-      note: "Clean workflow, code organization, and front-end development"
+      name: "WordPress",
+      iconUrl: "images/icons/wordpress-icon.svg",
+      accent: "#21759b"
     },
     {
-      name: "HTML5",
-      iconUrl: "https://cdn.simpleicons.org/html5/E34F26",
+      name: "Adobe Photoshop",
+      iconUrl: "images/icons/adobe-photoshop-icon.svg",
+      accent: "#31a8ff"
+    },
+    {
+      name: "After Effects",
+      iconUrl: "images/icons/adobe-after-effects-icon.svg",
+      accent: "#9999ff"
+    },
+    {
+      name: "Premiere Pro",
+      iconUrl: "images/icons/adobe-premiere-pro-icon.svg",
+      accent: "#9999ff"
+    }
+  ],
+  skillGroups: [
+    {
+      name: "Web & CMS",
+      accent: "#4f8f70",
+      note: "Platform-focused site building across content systems, storefront setup, and managed page publishing.",
+      items: [
+        {
+          name: "Drupal",
+          iconUrl: "images/icons/drupal-icon.svg",
+          accent: "#0678be"
+        },
+        {
+          name: "WordPress",
+          iconUrl: "images/icons/wordpress-icon.svg",
+          accent: "#21759b"
+        },
+        {
+          name: "Shopify",
+          iconUrl: "images/icons/shopify-icon.svg",
+          accent: "#95bf47"
+        }
+      ]
+    },
+    {
+      name: "Front-End Development",
       accent: "#e34f26",
-      note: "Semantic structure, accessibility, and content-first markup"
+      note: "Semantic markup, responsive styling, and practical workflow tools for clean, maintainable interfaces.",
+      items: [
+        {
+          name: "HTML",
+          iconUrl: "images/icons/html-icon.svg",
+          accent: "#e34f26"
+        },
+        {
+          name: "CSS",
+          iconUrl: "images/icons/css-icon.svg",
+          accent: "#1572b6"
+        },
+        {
+          name: "JavaScript",
+          iconUrl: "images/icons/javascript-programming-language-icon.svg",
+          accent: "#f7df1e"
+        },
+        {
+          name: "VS Code",
+          iconUrl: "images/icons/vscode-icon.svg",
+          accent: "#007acc"
+        },
+        {
+          name: "GitHub",
+          iconUrl: "images/icons/github-icon.svg",
+          accent: "#181717"
+        }
+      ]
     },
     {
-      name: "CSS3",
-      iconUrl: "https://cdn.simpleicons.org/css/1572B6",
-      accent: "#1572b6",
-      note: "Responsive layouts, animation, and visual refinement"
+      name: "UI/UX & Design Tools",
+      accent: "#f24e1e",
+      note: "Wireframes, interface visuals, and brand-aligned design systems from concept to polished screens.",
+      items: [
+        {
+          name: "Figma",
+          iconUrl: "images/icons/figma-icon.svg",
+          accent: "#f24e1e"
+        },
+        {
+          name: "Adobe Photoshop",
+          iconUrl: "images/icons/adobe-photoshop-icon.svg",
+          accent: "#31a8ff"
+        },
+        {
+          name: "Adobe Illustrator",
+          iconUrl: "images/icons/adobe-illustrator-icon.svg",
+          accent: "#ff9a00"
+        }
+      ]
     },
     {
-      name: "Bootstrap",
-      iconUrl: "https://cdn.simpleicons.org/bootstrap/7952B3",
-      accent: "#7952b3",
-      note: "Fast responsive foundations with custom premium styling layered on top"
+      name: "Video, Audio & Media Production",
+      accent: "#9999ff",
+      note: "Editing, motion, sound cleanup, and color adjustments for short-form visual storytelling.",
+      items: [
+        {
+          name: "Adobe Premiere Pro",
+          iconUrl: "images/icons/adobe-premiere-pro-icon.svg",
+          accent: "#9999ff"
+        },
+        {
+          name: "Adobe After Effects",
+          iconUrl: "images/icons/adobe-after-effects-icon.svg",
+          accent: "#9999ff"
+        },
+        {
+          name: "Adobe Audition",
+          iconUrl: "images/icons/adobe-audition-icon.svg",
+          accent: "#00e4bb"
+        },
+        {
+          name: "Adobe Lightroom",
+          iconUrl: "images/icons/adobe-lightroom-icon.svg",
+          accent: "#31a8ff"
+        }
+      ]
+    },
+    {
+      name: "Productivity & Collaboration",
+      accent: "#1d7f5f",
+      note: "Project coordination and shared-document workflows that keep teams aligned and delivery organized.",
+      items: [
+        {
+          name: "Basecamp",
+          iconUrl: "images/icons/basecamp-icon.svg",
+          accent: "#1d7f5f"
+        },
+        {
+          name: "SharePoint",
+          iconUrl: "images/icons/sharepoint-icon.svg",
+          accent: "#0078d4"
+        },
+        {
+          name: "Notion",
+          iconUrl: "images/icons/notion-icon.svg",
+          accent: "#111111"
+        }
+      ]
+    },
+    {
+      name: "Data & Analytics",
+      accent: "#f2c811",
+      note: "Clear dashboard thinking and reporting workflows for turning data into readable insights.",
+      items: [
+        {
+          name: "Power BI",
+          iconUrl: "images/icons/power-bi-icon.svg",
+          accent: "#f2c811"
+        }
+      ]
     }
   ],
   projects: [
@@ -67,7 +232,7 @@ window.SITE_DATA = {
       coverAlt: "Board and Bun sandwich menu concept",
       tags: ["Food photography", "Menu layout", "Visual hierarchy"],
       type: "case-study",
-      detailPage: "projects/board-and-bun.html",
+      detailPage: "projects/board-and-bun/",
       gallery: [
         {
           src: "images/portfolio/ux-ui-design/signature-sandwitches-576-1024.png",
@@ -149,7 +314,7 @@ window.SITE_DATA = {
       coverAlt: "Remiya app home screen hi-fi design",
       tags: ["Product concept", "Personas", "Mobile UI"],
       type: "case-study",
-      detailPage: "projects/remiya.html",
+      detailPage: "projects/remiya/",
       gallery: [
         {
           src: "images/portfolio/ux-ui-design/remiya/personas/primary-persona.png",
@@ -354,7 +519,7 @@ window.SITE_DATA = {
       coverAlt: "Mood board for Stittsville Shooting Range redesign",
       tags: ["Team project", "Brand refresh", "Responsive redesign"],
       type: "case-study",
-      detailPage: "projects/stittsville.html",
+      detailPage: "projects/stittsville/",
       gallery: [
         {
           src: "images/portfolio/ux-ui-design/stittsville/mood-2.jpg",
@@ -501,6 +666,95 @@ window.SITE_DATA = {
       }
     },
     {
+      id: "ai-business-idea-generator",
+      category: "Web Development",
+      title: "AI Business Idea Generator",
+      summary:
+        "A class-project web app that turns a short user profile into three structured business ideas with a guided form, loading state, and polished result cards.",
+      coverImage: "images/portfolio/web-development/ai-business-idea-generator/mtm6302-final.jpg",
+      coverAlt: "AI Business Idea Generator final interface",
+      tags: ["Vanilla JS", "AI workflow", "Responsive UI"],
+      type: "case-study",
+      detailPage: "projects/ai-business-idea-generator/",
+      liveUrl: "https://tazi0002.github.io/mtm6302-final/",
+      liveLabel: "Visit Live Site",
+      ctaLabel: "View Live Site",
+      meta: {
+        role: "Front-end developer",
+        tools: ["HTML", "CSS", "JavaScript", "Gemini API"],
+        deliverables: "Single-page app, guided form flow, result cards, and responsive layout",
+        outcome: "A small but polished AI-powered class project designed for clear demo use"
+      },
+      highlights: [
+        "Kept the scope intentionally small so the app stayed easy to understand and easy to demo.",
+        "Structured the AI output into predictable cards instead of leaving the response visually messy.",
+        "Moved from low-fi planning to a clearer hi-fi layout before building the final front-end."
+      ],
+      storyBlocks: [
+        {
+          type: "text",
+          eyebrow: "Overview",
+          title: "A simple AI tool with a clear classroom goal",
+          paragraphs: [
+            "This project was built as a lightweight class app where a user fills out a short form and receives three practical business ideas generated from their skills, budget, interests, time, and target market.",
+            "The brief emphasized keeping the experience polished but small: one page, clean structure, required-field validation, a visible loading state, and three result cards that are easy to scan during a demo."
+          ]
+        },
+        {
+          type: "list",
+          eyebrow: "MVP Scope",
+          title: "What the brief asked for",
+          intro:
+            "The assignment was framed as a focused minimum viable product rather than a full platform.",
+          items: [
+            "A single-page app with a short guided form and clear helper text.",
+            "Exactly three generated business idea cards returned in a consistent structure.",
+            "A responsive layout, loading state, error handling, and a fallback-safe demo flow."
+          ]
+        },
+        {
+          type: "gallery",
+          eyebrow: "Process",
+          title: "Moving from structure to interface",
+          layout: "split",
+          images: [
+            {
+              src: "images/portfolio/web-development/ai-business-idea-generator/LoFi.jpg",
+              alt: "Low-fidelity planning for the AI Business Idea Generator",
+              caption: "Low-fi planning helped define the form structure, result layout, and page flow."
+            },
+            {
+              src: "images/portfolio/web-development/ai-business-idea-generator/HiFi.jpg",
+              alt: "High-fidelity design for the AI Business Idea Generator",
+              caption: "The hi-fi pass tightened spacing, hierarchy, and card presentation before the build."
+            }
+          ]
+        },
+        {
+          type: "gallery",
+          eyebrow: "Final Build",
+          title: "The delivered front-end",
+          layout: "single",
+          images: [
+            {
+              src: "images/portfolio/web-development/ai-business-idea-generator/mtm6302-final.jpg",
+              alt: "Final AI Business Idea Generator website",
+              caption: "The final build focused on clarity, a modern form experience, and readable AI result cards."
+            }
+          ]
+        },
+        {
+          type: "text",
+          eyebrow: "Outcome",
+          title: "Why this project matters in my portfolio",
+          paragraphs: [
+            "This piece shows how I can take a written brief, simplify the scope, and turn it into a front-end experience that feels clean and usable instead of overbuilt.",
+            "It also reflects how I approach AI-related work pragmatically: structure the input, control the output format, and design the interface so the generated content stays readable and useful."
+          ]
+        }
+      ]
+    },
+    {
       id: "short-horror-movie",
       category: "Videography",
       title: "Short Horror Movie",
@@ -559,33 +813,70 @@ window.SITE_DATA = {
     }
   ],
   photography: [
-    { src: "images/portfolio/photography/8.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 1 },
-    { src: "images/portfolio/photography/11.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 2 },
-    { src: "images/portfolio/photography/12.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 3 },
-    { src: "images/portfolio/photography/14.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 4 },
-    { src: "images/portfolio/photography/21.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 5 },
-    { src: "images/portfolio/photography/22.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 6 },
-    { src: "images/portfolio/photography/25.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 7 },
-    { src: "images/portfolio/photography/29.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 8 },
-    { src: "images/portfolio/photography/31.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 9 },
-    { src: "images/portfolio/photography/36.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 10 },
-    { src: "images/portfolio/photography/37.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 11 },
-    { src: "images/portfolio/photography/39.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 12 },
-    { src: "images/portfolio/photography/dSC01205.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 13 },
-    { src: "images/portfolio/photography/iMG_0070.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 14 },
-    { src: "images/portfolio/photography/iMG_0229.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 15 },
-    { src: "images/portfolio/photography/iMG_0660.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 16 },
-    { src: "images/portfolio/photography/iMG_1282.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 17 },
-    { src: "images/portfolio/photography/iMG_1419.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 18 },
-    { src: "images/portfolio/photography/iMG_1675.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 01", order: 19 },
-    { src: "images/portfolio/photography/iMG_1847.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 20 },
-    { src: "images/portfolio/photography/iMG_3001.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 21 },
-    { src: "images/portfolio/photography/iMG_3135.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 02", order: 22 },
-    { src: "images/portfolio/photography/iMG_3175.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 23 },
-    { src: "images/portfolio/photography/iMG_3763.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 24 },
-    { src: "images/portfolio/photography/iMG_3781.jpg", alt: "Photography work by Ali Tazikeh", collection: "Series 03", order: 25 },
-    { src: "images/portfolio/photography/iMG_3929.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 26 },
-    { src: "images/portfolio/photography/iMG_4993.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 27 },
-    { src: "images/portfolio/photography/iMG_5641.jpg", alt: "Photography work by Ali Tazikeh", collection: "Featured", order: 28 }
+    { src: "images/portfolio/photography/Farib/(1).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 1 },
+    { src: "images/portfolio/photography/Farib/(2).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 2 },
+    { src: "images/portfolio/photography/Farib/(3).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 3 },
+    { src: "images/portfolio/photography/Farib/(4).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 4 },
+    { src: "images/portfolio/photography/Farib/(5).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 5 },
+    { src: "images/portfolio/photography/Farib/(6).JPG", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 6 },
+    { src: "images/portfolio/photography/Farib/(7).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 7 },
+    { src: "images/portfolio/photography/Farib/(8).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 8 },
+    { src: "images/portfolio/photography/Farib/(9).JPG", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 9 },
+    { src: "images/portfolio/photography/Farib/(10).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 10 },
+    { src: "images/portfolio/photography/Farib/(11).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 11 },
+    { src: "images/portfolio/photography/Farib/(12).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 12 },
+    { src: "images/portfolio/photography/Farib/(13).JPG", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 13 },
+    { src: "images/portfolio/photography/Farib/(14).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 14 },
+    { src: "images/portfolio/photography/Farib/(15).jpg", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 15 },
+    { src: "images/portfolio/photography/Farib/(16).JPG", alt: "Farib photography by Ali Tazikeh", collection: "Farib", order: 16 },
+    { src: "images/portfolio/photography/IG/1.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 1 },
+    { src: "images/portfolio/photography/IG/2.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 2 },
+    { src: "images/portfolio/photography/IG/3.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 3 },
+    { src: "images/portfolio/photography/IG/4.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 4 },
+    { src: "images/portfolio/photography/IG/5.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 5 },
+    { src: "images/portfolio/photography/IG/6.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 6 },
+    { src: "images/portfolio/photography/IG/7.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 7 },
+    { src: "images/portfolio/photography/IG/8.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 8 },
+    { src: "images/portfolio/photography/IG/9.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 9 },
+    { src: "images/portfolio/photography/IG/10.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 10 },
+    { src: "images/portfolio/photography/IG/11.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 11 },
+    { src: "images/portfolio/photography/IG/12.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 12 },
+    { src: "images/portfolio/photography/IG/13.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 13 },
+    { src: "images/portfolio/photography/IG/14.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 14 },
+    { src: "images/portfolio/photography/IG/15.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 15 },
+    { src: "images/portfolio/photography/IG/16.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 16 },
+    { src: "images/portfolio/photography/IG/17.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 17 },
+    { src: "images/portfolio/photography/IG/18.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 18 },
+    { src: "images/portfolio/photography/IG/19.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 19 },
+    { src: "images/portfolio/photography/IG/20.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 20 },
+    { src: "images/portfolio/photography/IG/21.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 21 },
+    { src: "images/portfolio/photography/IG/22.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 22 },
+    { src: "images/portfolio/photography/IG/23.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 23 },
+    { src: "images/portfolio/photography/IG/24.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 24 },
+    { src: "images/portfolio/photography/IG/25.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 25 },
+    { src: "images/portfolio/photography/IG/26.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 26 },
+    { src: "images/portfolio/photography/IG/27.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 27 },
+    { src: "images/portfolio/photography/IG/28.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 28 },
+    { src: "images/portfolio/photography/IG/29.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 29 },
+    { src: "images/portfolio/photography/IG/30.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 30 },
+    { src: "images/portfolio/photography/IG/31.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 31 },
+    { src: "images/portfolio/photography/IG/32.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 32 },
+    { src: "images/portfolio/photography/IG/33.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 33 },
+    { src: "images/portfolio/photography/IG/34.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 34 },
+    { src: "images/portfolio/photography/IG/35.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 35 },
+    { src: "images/portfolio/photography/IG/36.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 36 },
+    { src: "images/portfolio/photography/IG/37.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 37 },
+    { src: "images/portfolio/photography/IG/38.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 38 },
+    { src: "images/portfolio/photography/IG/39.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 39 },
+    { src: "images/portfolio/photography/IG/40.jpg", alt: "IG photography by Ali Tazikeh", collection: "IG", order: 40 },
+    { src: "images/portfolio/photography/Jaffle/(1).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 1 },
+    { src: "images/portfolio/photography/Jaffle/(2).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 2 },
+    { src: "images/portfolio/photography/Jaffle/(3).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 3 },
+    { src: "images/portfolio/photography/Jaffle/(4).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 4 },
+    { src: "images/portfolio/photography/Jaffle/(5).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 5 },
+    { src: "images/portfolio/photography/Jaffle/(6).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 6 },
+    { src: "images/portfolio/photography/Jaffle/(7).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 7 },
+    { src: "images/portfolio/photography/Jaffle/(8).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 8 },
+    { src: "images/portfolio/photography/Jaffle/(9).png", alt: "Jaffle photography by Ali Tazikeh", collection: "Jaffle", order: 9 }
   ]
 };

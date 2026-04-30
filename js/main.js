@@ -32,6 +32,55 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var portfolioSections = [
+    {
+      key: "ux-ui-design",
+      category: "UX/UI Design",
+      type: "projects",
+      gridId: "ux-grid",
+      actionId: "ux-actions",
+      pageHref: "ux-ui-design/",
+      pageTitle: "UX/UI Design",
+      pageDescription: "Case studies focused on process, systems, and user-centered thinking."
+    },
+    {
+      key: "web-development",
+      category: "Web Development",
+      type: "projects",
+      gridId: "web-grid",
+      actionId: "web-actions",
+      pageHref: "web-development/",
+      pageTitle: "Web Development",
+      pageDescription: "Responsive front-end work translated from structured design direction."
+    },
+    {
+      key: "photography",
+      category: "Photography",
+      type: "photography",
+      gridId: "photo-preview-grid",
+      actionId: "photo-actions",
+      pageHref: "photography/",
+      pageTitle: "Photography",
+      pageDescription: "Editorial image work presented as a curated collection with full-size viewing."
+    },
+    {
+      key: "videography",
+      category: "Videography",
+      type: "projects",
+      gridId: "video-grid",
+      actionId: "video-actions",
+      pageHref: "videography/",
+      pageTitle: "Videography",
+      pageDescription: "Short-form film and audio-driven work shaped by pacing, sound, and story."
+    }
+  ];
+
+  function getPortfolioSection(sectionKey) {
+    return portfolioSections.find(function (section) {
+      return section.key === sectionKey;
+    });
+  }
+
   function createTagMarkup(tags) {
     return (tags || [])
       .map(function (tag) {
@@ -40,14 +89,45 @@ document.addEventListener("DOMContentLoaded", function () {
       .join("");
   }
 
-  function createProjectCard(project) {
+  function createProjectCard(project, options) {
+    var settings = options || {};
+    var cardClickable = settings.cardClickable !== false;
     var linkLabel = project.ctaLabel || (project.type === "case-study" ? "Explore Case Study" : "Open Project");
     var destination = project.type === "case-study" ? resolvePath(project.detailPage) : project.externalUrl;
     var target = project.type === "case-study" ? "" : ' target="_blank" rel="noreferrer"';
     var tools = project.meta && project.meta.tools ? project.meta.tools.join(" • ") : "";
+    var footerAction = cardClickable
+      ? '<span class="button button-secondary" aria-hidden="true">' +
+        escapeHtml(linkLabel) +
+        '<i data-lucide="arrow-up-right"></i></span>'
+      : '<a class="button button-secondary interactive-hover" href="' + escapeHtml(resolvePath(destination)) + '"' + target + ">" +
+        escapeHtml(linkLabel) +
+        '<i data-lucide="arrow-up-right"></i></a>';
+
+    if (cardClickable) {
+      return (
+        '<a class="portfolio-card reveal interactive-hover" href="' + escapeHtml(resolvePath(destination)) + '"' + target + ">" +
+        '<div class="portfolio-media">' +
+        '<img src="' + escapeHtml(resolvePath(project.coverImage)) + '" alt="' + escapeHtml(project.coverAlt) + '">' +
+        "</div>" +
+        '<div class="portfolio-card-body">' +
+        '<div class="portfolio-chip-row">' + createTagMarkup(project.tags) + "</div>" +
+        '<h3 class="portfolio-card-title">' + escapeHtml(project.title) + "</h3>" +
+        '<p class="portfolio-card-copy">' + escapeHtml(project.summary) + "</p>" +
+        '<div class="portfolio-meta">' +
+        '<span><i data-lucide="briefcase"></i>' + escapeHtml(project.meta.role) + "</span>" +
+        '<span><i data-lucide="sparkles"></i>' + escapeHtml(tools) + "</span>" +
+        "</div>" +
+        '<div class="portfolio-card-footer">' +
+        footerAction +
+        "</div>" +
+        "</div>" +
+        "</a>"
+      );
+    }
 
     return (
-      '<a class="portfolio-card reveal interactive-hover" href="' + escapeHtml(resolvePath(destination)) + '"' + target + ">" +
+      '<article class="portfolio-card portfolio-card-static reveal">' +
       '<div class="portfolio-media">' +
       '<img src="' + escapeHtml(resolvePath(project.coverImage)) + '" alt="' + escapeHtml(project.coverAlt) + '">' +
       "</div>" +
@@ -60,29 +140,108 @@ document.addEventListener("DOMContentLoaded", function () {
       '<span><i data-lucide="sparkles"></i>' + escapeHtml(tools) + "</span>" +
       "</div>" +
       '<div class="portfolio-card-footer">' +
-      '<span class="button button-secondary" aria-hidden="true">' +
-      escapeHtml(linkLabel) +
-      '<i data-lucide="arrow-up-right"></i></span>' +
+      footerAction +
       "</div>" +
       "</div>" +
+      "</article>"
+    );
+  }
+
+  function createPortfolioAction(section, totalCount) {
+    if (!section) {
+      return "";
+    }
+
+    if (section.key === "photography") {
+      return (
+        '<a class="button button-secondary interactive-hover" href="' + escapeHtml(resolvePath(section.pageHref)) + '" target="_blank" rel="noreferrer">' +
+        "Visit the Albums" +
+        '<i data-lucide="arrow-up-right"></i>' +
+        "</a>"
+      );
+    }
+
+    if (totalCount <= 3) {
+      return "";
+    }
+
+    return (
+      '<a class="button button-secondary interactive-hover" href="' + escapeHtml(resolvePath(section.pageHref)) + '" target="_blank" rel="noreferrer">' +
+      "See More" +
+      '<i data-lucide="arrow-up-right"></i>' +
       "</a>"
     );
+  }
+
+  function createIconImageMarkup(item, className) {
+    return '<img class="' + className + '" src="' + escapeHtml(resolvePath(item.iconUrl)) + '" alt="' + escapeHtml(item.name) + ' icon">';
+  }
+
+  function getFileNameWithoutExtension(path) {
+    var segments = String(path || "").split("/");
+    var fileName = segments[segments.length - 1] || "";
+    return fileName.replace(/\.[^.]+$/, "");
+  }
+
+  function formatPhotoName(path) {
+    var rawName = getFileNameWithoutExtension(path)
+      .replace(/[_-]+/g, " ")
+      .replace(/[()]/g, "")
+      .trim();
+
+    return rawName || "Untitled";
+  }
+
+  function getPhotographyItems() {
+    return (data.photography || []).map(function (photo, index) {
+      return Object.assign({ sequence: index + 1 }, photo);
+    });
+  }
+
+  function getPhotographyAlbums() {
+    var groups = {};
+    var albums = [];
+
+    getPhotographyItems().forEach(function (photo) {
+      if (!groups[photo.collection]) {
+        groups[photo.collection] = {
+          name: photo.collection,
+          coverImage: photo.src,
+          coverAlt: photo.alt,
+          items: []
+        };
+        albums.push(groups[photo.collection]);
+      }
+
+      groups[photo.collection].items.push(photo);
+    });
+
+    return albums;
   }
 
   function renderSkills() {
     var skillGrid = document.getElementById("skills-grid");
     var floatingIcons = document.getElementById("hero-floating-icons");
+    var footerSocialRows = document.querySelectorAll("[data-footer-socials]");
 
     if (skillGrid) {
-      skillGrid.innerHTML = (data.skills || [])
-        .map(function (skill, index) {
+      skillGrid.innerHTML = (data.skillGroups || [])
+        .map(function (group, index) {
           return (
-            '<article class="skill-card reveal" style="--skill-accent:' + escapeHtml(skill.accent) + ";--skill-delay:" + index + '">' +
-            '<div class="skill-icon-wrap">' +
-            '<img src="' + escapeHtml(skill.iconUrl) + '" alt="' + escapeHtml(skill.name) + ' logo" class="skill-icon">' +
+            '<article class="skill-card reveal" style="--skill-accent:' + escapeHtml(group.accent) + ";--skill-delay:" + index + '">' +
+            '<div class="skill-icon-row">' +
+            (group.items || [])
+              .map(function (item) {
+                return (
+                  '<span class="skill-chip" title="' + escapeHtml(item.name) + '" aria-label="' + escapeHtml(item.name) + '">' +
+                  createIconImageMarkup(item, "skill-icon") +
+                  "</span>"
+                );
+              })
+              .join("") +
             "</div>" +
-            '<h3 class="skill-title">' + escapeHtml(skill.name) + "</h3>" +
-            '<p class="skill-note">' + escapeHtml(skill.note) + "</p>" +
+            '<h3 class="skill-title">' + escapeHtml(group.name) + "</h3>" +
+            '<p class="skill-note">' + escapeHtml(group.note) + "</p>" +
             "</article>"
           );
         })
@@ -90,17 +249,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (floatingIcons) {
-      floatingIcons.innerHTML = (data.skills || [])
-        .slice(0, 6)
+      floatingIcons.innerHTML = (data.heroSkills || [])
+        .slice(0, 7)
         .map(function (skill, index) {
           return (
-            '<div class="floating-skill skill-pos-' + (index + 1) + ' interactive-hover" style="--skill-accent:' + escapeHtml(skill.accent) + '">' +
-            '<img src="' + escapeHtml(skill.iconUrl) + '" alt="' + escapeHtml(skill.name) + ' logo">' +
+            '<div class="floating-skill skill-pos-' + (index + 1) + '" style="--skill-accent:' + escapeHtml(skill.accent) +
+            '" aria-label="' + escapeHtml(skill.name) + '" title="' + escapeHtml(skill.name) + '">' +
+            createIconImageMarkup(skill, "floating-skill-icon") +
             '<span>' + escapeHtml(skill.name) + "</span>" +
             "</div>"
           );
         })
         .join("");
+    }
+
+    if (footerSocialRows.length) {
+      Array.prototype.forEach.call(footerSocialRows, function (row) {
+        row.innerHTML = (data.heroSocials || [])
+          .map(function (social) {
+            return (
+              '<a class="footer-social-link interactive-hover" href="' + escapeHtml(resolvePath(social.href)) + '" target="_blank" rel="noreferrer" aria-label="' + escapeHtml(social.name) +
+              '" title="' + escapeHtml(social.name) + '">' +
+              createIconImageMarkup(social, "footer-social-icon") +
+              "</a>"
+            );
+          })
+          .join("");
+      });
     }
   }
 
@@ -123,35 +298,81 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderProjectOverview() {
-    var sections = [
-      { id: "ux-grid", category: "UX/UI Design" },
-      { id: "web-grid", category: "Web Development" },
-      { id: "video-grid", category: "Videography" }
-    ];
+    portfolioSections
+      .filter(function (section) {
+        return section.type === "projects";
+      })
+      .forEach(function (section) {
+        var items = getProjectsByCategory(section.category);
+        var container = document.getElementById(section.gridId);
+        var actionWrap = document.getElementById(section.actionId);
 
-    sections.forEach(function (section) {
-      var container = document.getElementById(section.id);
-      if (!container) {
-        return;
-      }
+        if (!container) {
+          return;
+        }
 
-      container.innerHTML = getProjectsByCategory(section.category)
-        .map(createProjectCard)
-        .join("");
-    });
+        container.innerHTML = items
+          .slice(0, 3)
+          .map(function (project) {
+            return createProjectCard(project, { cardClickable: false });
+          })
+          .join("");
+
+        if (actionWrap) {
+          actionWrap.innerHTML = createPortfolioAction(section, items.length);
+        }
+      });
 
     var photoPreview = document.getElementById("photo-preview-grid");
+    var photoActions = document.getElementById("photo-actions");
     if (photoPreview) {
-      photoPreview.innerHTML = (data.photography || [])
-        .slice(0, 4)
-        .map(function (photo, index) {
+      photoPreview.innerHTML = getPhotographyAlbums()
+        .slice(0, 3)
+        .map(function (album) {
           return (
-            '<button class="photo-preview-card reveal interactive-hover" type="button" data-photo-index="' + index + '">' +
-            '<img src="' + escapeHtml(resolvePath(photo.src)) + '" alt="' + escapeHtml(photo.alt) + '">' +
-            '<span class="photo-preview-label">' + escapeHtml(photo.collection) + "</span>" +
+            '<button class="photo-preview-card reveal interactive-hover" type="button" data-photo-src="' + escapeHtml(album.coverImage) + '" data-lightbox-caption="' + escapeHtml(album.name) + '">' +
+            '<img src="' + escapeHtml(resolvePath(album.coverImage)) + '" alt="' + escapeHtml(album.coverAlt) + '">' +
+            '<span class="photo-preview-label">' + escapeHtml(album.name) + "</span>" +
             "</button>"
           );
         })
+        .join("");
+    }
+
+    if (photoActions) {
+      photoActions.innerHTML = createPortfolioAction(getPortfolioSection("photography"), getPhotographyAlbums().length);
+    }
+  }
+
+  function renderCategoryPage() {
+    if (body.dataset.page !== "portfolio-category") {
+      return;
+    }
+
+    var section = getPortfolioSection(body.dataset.sectionKey || "");
+    if (!section) {
+      return;
+    }
+
+    document.title = section.pageTitle + " | Ali Tazikeh";
+
+    var title = document.getElementById("category-page-title");
+    var copy = document.getElementById("category-page-copy");
+    var projectGrid = document.getElementById("category-project-grid");
+
+    if (title) {
+      title.textContent = section.pageTitle;
+    }
+
+    if (copy) {
+      copy.textContent = section.pageDescription;
+    }
+
+    if (section.type === "projects" && projectGrid) {
+      projectGrid.innerHTML = getProjectsByCategory(section.category)
+        .map(function (project) {
+            return createProjectCard(project, { cardClickable: false });
+          })
         .join("");
     }
   }
@@ -162,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function getFilteredPhotos() {
-    var photos = (data.photography || []).slice();
+    var photos = getPhotographyItems();
 
     if (photoState.filter !== "All") {
       photos = photos.filter(function (photo) {
@@ -172,14 +393,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     photos.sort(function (a, b) {
       if (photoState.sort === "reverse") {
-        return b.order - a.order;
+        return b.sequence - a.sequence;
       }
 
-      if (photoState.sort === "filename") {
-        return a.src.localeCompare(b.src);
-      }
-
-      return a.order - b.order;
+      return a.sequence - b.sequence;
     });
 
     return photos;
@@ -195,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var collections = ["All"].concat(
       Array.from(
         new Set(
-          (data.photography || []).map(function (photo) {
+          getPhotographyItems().map(function (photo) {
             return photo.collection;
           })
         )
@@ -227,10 +444,10 @@ document.addEventListener("DOMContentLoaded", function () {
     grid.innerHTML = filteredPhotos
       .map(function (photo) {
         return (
-          '<button class="photo-card interactive-hover" type="button" data-photo-src="' + escapeHtml(photo.src) + '" data-lightbox-caption="' + escapeHtml(photo.collection) + '">' +
+          '<button class="photo-card interactive-hover" type="button" data-photo-src="' + escapeHtml(photo.src) + '" data-lightbox-caption="' + escapeHtml(formatPhotoName(photo.src)) + '">' +
           '<img src="' + escapeHtml(resolvePath(photo.src)) + '" alt="' + escapeHtml(photo.alt) + '">' +
           '<span class="photo-card-meta">' +
-          '<strong>' + escapeHtml(photo.collection) + "</strong>" +
+          '<strong>' + escapeHtml(formatPhotoName(photo.src)) + "</strong>" +
           "</span>" +
           "</button>"
         );
@@ -307,6 +524,11 @@ document.addEventListener("DOMContentLoaded", function () {
       '<span class="section-label">Case Study</span>' +
       '<h1 class="project-title">' + escapeHtml(project.title) + "</h1>" +
       '<p class="project-summary">' + escapeHtml(project.summary) + "</p>" +
+      (project.liveUrl
+        ? '<div class="hero-actions"><a class="button button-primary interactive-hover" href="' + escapeHtml(project.liveUrl) + '" target="_blank" rel="noreferrer">' +
+          escapeHtml(project.liveLabel || "Visit Live Site") +
+          '<i data-lucide="arrow-up-right"></i></a></div>'
+        : "") +
       '<div class="project-tag-row">' + createTagMarkup(project.tags) + "</div>" +
       '<div class="project-meta-grid">' +
       '<div class="project-meta-card"><span>Role</span><strong>' + escapeHtml(project.meta.role) + "</strong></div>" +
@@ -398,11 +620,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initPhotoInteractions() {
     document.addEventListener("click", function (event) {
+      var projectCard = event.target.closest(".portfolio-card");
       var filterButton = event.target.closest("[data-filter]");
       var photoButton = event.target.closest("[data-photo-src]");
-      var previewButton = event.target.closest("[data-photo-index]");
       var genericLightboxButton = event.target.closest("[data-lightbox-src]");
       var lightboxClose = event.target.closest("[data-close-lightbox]");
+
+      if (projectCard && projectCard.getAttribute("href") && /\/projects\//.test(projectCard.getAttribute("href"))) {
+        window.sessionStorage.setItem("portfolioReturnHref", window.location.href);
+      }
 
       if (filterButton) {
         photoState.filter = filterButton.dataset.filter;
@@ -413,7 +639,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (photoButton) {
-        var photo = (data.photography || []).find(function (item) {
+        var photo = getPhotographyItems().find(function (item) {
           return item.src === photoButton.dataset.photoSrc;
         });
 
@@ -421,19 +647,7 @@ document.addEventListener("DOMContentLoaded", function () {
           openLightbox({
             src: photo.src,
             alt: photo.alt,
-            caption: photo.collection
-          });
-        }
-        return;
-      }
-
-      if (previewButton) {
-        var previewPhoto = (data.photography || [])[Number(previewButton.dataset.photoIndex)];
-        if (previewPhoto) {
-          openLightbox({
-            src: previewPhoto.src,
-            alt: previewPhoto.alt,
-            caption: previewPhoto.collection
+            caption: formatPhotoName(photo.src)
           });
         }
         return;
@@ -485,10 +699,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var target = { x: position.x, y: position.y };
 
     function animateCursor() {
-      position.x += (target.x - position.x) * 0.14;
-      position.y += (target.y - position.y) * 0.14;
+      position.x += (target.x - position.x) * 0.32;
+      position.y += (target.y - position.y) * 0.32;
       cursorGlow.style.transform = "translate3d(" + position.x + "px, " + position.y + "px, 0)";
-      cursorCore.style.transform = "translate3d(" + target.x + "px, " + target.y + "px, 0)";
+      cursorCore.style.transform = "translate3d(" + position.x + "px, " + position.y + "px, 0)";
       window.requestAnimationFrame(animateCursor);
     }
 
@@ -498,19 +712,91 @@ document.addEventListener("DOMContentLoaded", function () {
       body.classList.add("cursor-visible");
     });
 
-    document.addEventListener("mouseover", function (event) {
-      if (event.target.closest(".interactive-hover, a, button, input, textarea, select")) {
-        body.classList.add("cursor-hover");
-      }
-    });
-
-    document.addEventListener("mouseout", function (event) {
-      if (event.target.closest(".interactive-hover, a, button, input, textarea, select")) {
-        body.classList.remove("cursor-hover");
-      }
-    });
-
     animateCursor();
+  }
+
+  function initNavState() {
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+    if (!navLinks.length) {
+      return;
+    }
+
+    function setActiveNav(targetId) {
+      navLinks.forEach(function (link) {
+        var href = link.getAttribute("href") || "";
+        link.classList.toggle("is-active", href.endsWith("#" + targetId));
+      });
+    }
+
+    if (body.dataset.page !== "home") {
+      setActiveNav("portfolio");
+      return;
+    }
+
+    var sections = ["about", "skills", "portfolio", "contact"]
+      .map(function (id) {
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return;
+    }
+
+    function updateActiveSection() {
+      var marker = window.scrollY + window.innerHeight * 0.4;
+      var activeId = null;
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) {
+        setActiveNav(sections[sections.length - 1].id);
+        return;
+      }
+
+      if (marker < sections[0].offsetTop) {
+        setActiveNav("");
+        return;
+      }
+
+      sections.forEach(function (section) {
+        if (section.offsetTop <= marker) {
+          activeId = section.id;
+        }
+      });
+
+      setActiveNav(activeId);
+    }
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    updateActiveSection();
+  }
+
+  function initProjectReturnLink() {
+    if (body.dataset.page !== "project") {
+      return;
+    }
+
+    var exploreLink = document.querySelector(".project-cta-section .button");
+    if (!exploreLink) {
+      return;
+    }
+
+    var storedReturnHref = window.sessionStorage.getItem("portfolioReturnHref");
+    var fallbackHref = document.referrer || "";
+    var returnHref = storedReturnHref || fallbackHref;
+
+    if (!returnHref) {
+      return;
+    }
+
+    try {
+      var parsedUrl = new URL(returnHref, window.location.href);
+      if (parsedUrl.origin === window.location.origin) {
+        exploreLink.href = parsedUrl.href;
+      }
+    } catch (error) {
+      // Keep the fallback href from markup when the stored URL is invalid.
+    }
   }
 
   function initPortraitTilt() {
@@ -728,9 +1014,12 @@ document.addEventListener("DOMContentLoaded", function () {
   renderHeroStats();
   renderSkills();
   renderProjectOverview();
+  renderCategoryPage();
   renderPhotographyFilters();
   renderPhotographyGrid();
   renderProjectPage();
+  initNavState();
+  initProjectReturnLink();
   initPhotoInteractions();
   initCursorGlow();
   initPortraitTilt();
