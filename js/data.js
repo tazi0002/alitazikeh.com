@@ -67,11 +67,6 @@ window.SITE_DATA = {
       accent: "#21759b"
     },
     {
-      name: "Adobe Photoshop",
-      iconUrl: "images/icons/adobe-photoshop-icon.svg",
-      accent: "#31a8ff"
-    },
-    {
       name: "After Effects",
       iconUrl: "images/icons/adobe-after-effects-icon.svg",
       accent: "#9999ff"
@@ -81,6 +76,26 @@ window.SITE_DATA = {
       iconUrl: "images/icons/adobe-premiere-pro-icon.svg",
       accent: "#9999ff"
     }
+  ],
+  iconMarquee: [
+    { name: "Adobe After Effects", iconUrl: "images/icons/adobe-after-effects-icon.svg" },
+    { name: "Adobe Audition", iconUrl: "images/icons/adobe-audition-icon.svg" },
+    { name: "Adobe Illustrator", iconUrl: "images/icons/adobe-illustrator-icon.svg" },
+    { name: "Adobe Lightroom", iconUrl: "images/icons/adobe-lightroom-icon.svg" },
+    { name: "Adobe Photoshop", iconUrl: "images/icons/adobe-photoshop-icon.svg" },
+    { name: "Adobe Premiere Pro", iconUrl: "images/icons/adobe-premiere-pro-icon.svg" },
+    { name: "Basecamp", iconUrl: "images/icons/basecamp-icon.svg" },
+    { name: "CSS", iconUrl: "images/icons/css-icon.svg" },
+    { name: "Drupal", iconUrl: "images/icons/drupal-icon.svg" },
+    { name: "Figma", iconUrl: "images/icons/figma-icon.svg" },
+    { name: "HTML", iconUrl: "images/icons/html-icon.svg" },
+    { name: "JavaScript", iconUrl: "images/icons/javascript-programming-language-icon.svg" },
+    { name: "Notion", iconUrl: "images/icons/notion-icon.svg" },
+    { name: "Power BI", iconUrl: "images/icons/power-bi-icon.svg" },
+    { name: "SharePoint", iconUrl: "images/icons/sharepoint-icon.svg" },
+    { name: "Shopify", iconUrl: "images/icons/shopify-icon.svg" },
+    { name: "VS Code", iconUrl: "images/icons/vscode-icon.svg" },
+    { name: "WordPress", iconUrl: "images/icons/wordpress-icon.svg" }
   ],
   skillGroups: [
     {
@@ -757,20 +772,20 @@ window.SITE_DATA = {
     {
       id: "short-horror-movie",
       category: "Videography",
-      title: "Short Horror Movie",
+      title: "What After",
       summary:
-        "A short film edited from raw, unorganized footage into a cohesive story with a defined beginning, direction, and ending.",
-      coverImage: "images/portfolio/videography/short-horror-movie/short-horror-movie-cover-image.png",
-      coverAlt: "Short horror movie cover image",
+        "A documentary about Ulochi Eze, who balances a full-time job with photography as a creative hobby after working hours.",
+      coverImage: "images/portfolio/videography/what-after/what-after.jpg",
+      coverAlt: "What After video cover image",
       tags: ["Story editing", "Narrative structure", "Video foundations"],
       type: "external",
-      externalUrl: "https://www.youtube.com/watch?v=icLCB1YwOCU",
+      externalUrl: "https://youtu.be/xR6u-_PsnbA",
       ctaLabel: "View Video",
       meta: {
         role: "Editor",
         tools: ["Video editing"],
-        deliverables: "Short narrative video",
-        outcome: "A cohesive short film built from raw footage"
+        deliverables: "Short documentary video",
+        outcome: "A personal story about making time for photography beyond full-time work"
       }
     },
     {

@@ -594,6 +594,65 @@ body.cursor-visible .cursor-core {
   margin-top: 0.25rem;
 }
 
+.logo-marquee-section {
+  padding: 1.4rem 0 0.4rem;
+  overflow: hidden;
+}
+
+.logo-marquee-shell {
+  position: relative;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.logo-marquee {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  padding: 1rem 0;
+}
+
+.logo-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.85rem, 2vw, 1.3rem);
+  min-width: max-content;
+  padding-right: clamp(0.85rem, 2vw, 1.3rem);
+  animation: logo-marquee-slide 34s linear infinite;
+}
+
+.logo-marquee-shell:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+.logo-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(58px, 7vw, 78px);
+  height: clamp(58px, 7vw, 78px);
+  flex: 0 0 auto;
+}
+
+.logo-marquee-icon {
+  width: clamp(28px, 4vw, 38px);
+  height: clamp(28px, 4vw, 38px);
+  object-fit: contain;
+}
+
+@keyframes logo-marquee-slide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 .skills-grid {
   display: grid;
   gap: 1rem;
@@ -1378,7 +1437,8 @@ body.lightbox-open {
   }
 
   .hero-portrait-card,
-  .floating-skill {
+  .floating-skill,
+  .logo-marquee-track {
     animation: none;
   }
 

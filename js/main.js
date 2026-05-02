@@ -222,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderSkills() {
     var skillGrid = document.getElementById("skills-grid");
     var floatingIcons = document.getElementById("hero-floating-icons");
+    var iconMarquee = document.getElementById("icon-marquee");
     var footerSocialRows = document.querySelectorAll("[data-footer-socials]");
 
     if (skillGrid) {
@@ -261,6 +262,23 @@ document.addEventListener("DOMContentLoaded", function () {
           );
         })
         .join("");
+    }
+
+    if (iconMarquee) {
+      var marqueeItems = data.iconMarquee || [];
+      var marqueeMarkup = marqueeItems
+        .map(function (item) {
+          return (
+            '<span class="logo-marquee-item" title="' + escapeHtml(item.name) + '" aria-label="' + escapeHtml(item.name) + '">' +
+            createIconImageMarkup(item, "logo-marquee-icon") +
+            "</span>"
+          );
+        })
+        .join("");
+
+      iconMarquee.innerHTML =
+        '<div class="logo-marquee-track">' + marqueeMarkup + "</div>" +
+        '<div class="logo-marquee-track" aria-hidden="true">' + marqueeMarkup + "</div>";
     }
 
     if (footerSocialRows.length) {
